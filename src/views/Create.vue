@@ -7,7 +7,7 @@
                     <label for="body">Body:</label><br>
                     <textarea type="text" name="body" class="form-control" id="exampleFormControlInput1" v-model="form.body"></textarea><br>
                 </div>
-                <button type="button" class="btn btn-primary" v-if="form.body.length !=0" @click.prevent="create(form)">✅Ajouter✅</button>
+                <button type="button" class="btn btn-primary" v-if="form.body.length !=0" @click.prevent="create(form)">Ajouter un tâche</button>
     </form>
     <div v-else>Not logged.</div>
   </div>
