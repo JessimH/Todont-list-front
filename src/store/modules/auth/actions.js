@@ -52,7 +52,7 @@ export const register = ({ commit, state }, form) => {
         }
 
         commit('data', user)
-        state.msg.success = 'Compte enregsitré'
+        state.msg.success = 'Compte enregistré'
         // window.location.href="/login"
     }).catch((error) => {
         state.msg.error = error
@@ -85,7 +85,7 @@ export const logout = ({ commit, state }) => {
 export const tasks_user = ({ commit, state }) => {
     console.log(state.user.token)
     axios.get(
-        'https://tondont-list.herokuapp.com/api/tasks/', {
+        'https://tondont-list.herokuapp.com/api/tasks', {
         headers: {
             'Authorization': `Bearer ${state.user.token}`
         }
@@ -164,7 +164,7 @@ export const deleteTask = ({ state, commit }, task) => {
 
 export const createTask = ({ state }, form) => {
     axios.post(
-        'https://tondont-list.herokuapp.com/api/tasks/', {
+        'https://tondont-list.herokuapp.com/api/tasks', {
         body: form.body
     },
         {
