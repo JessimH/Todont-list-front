@@ -32,13 +32,13 @@
             ...mapGetters({'user': 'auth/user'}),
              ...mapGetters({'tasks': 'auth/tasks'})
         },
-        methods: {
-            ...mapActions({'tasks_user': 'auth/tasks_user'})
-
-        },
         mounted(){
                 this.tasks_user()
                 console.log("taches" + this.tasks)            
+        },
+        methods: {
+            ...mapActions({'tasks_user': 'auth/tasks_user'})
+
         }
     }
 </script>

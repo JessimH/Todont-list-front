@@ -61,7 +61,7 @@ export const logout = ({ commit, state }) => {
         }
     }).then((response) => {
         console.log(response);
-        state.msg.success = 'Vous etes déconnecté'
+        state.msg.success = 'Vous êtes déconnecté'
     }).catch((error) => {
         console.log(error)
     });
