@@ -10,20 +10,14 @@ export const login = ({ commit, state }, form) => {
         }
     ).then((response) => {
         console.log(response);
-
-        // console.log(response.data.token)
         commit('token', response.data.token)
-
         const user = {
             name: response.data.name,
             email: response.data.email,
             created_at: response.data.created_at
         }
-
         commit('data', user)
-        state.msg.success = 'Vous etes connecté'
-
-
+        state.msg.success = 'Vous êtes connecté'
     }).catch((error) => {
         state.msg.error = error
         console.log(error)
@@ -41,19 +35,14 @@ export const register = ({ commit, state }, form) => {
         }
     ).then((response) => {
         console.log(response);
-
-        // console.log(response.data.token)
         commit('token', response.data.token)
-
         const user = {
             name: response.data.name,
             email: response.data.email,
             created_at: response.data.created_at
         }
-
         commit('data', user)
         state.msg.success = 'Compte enregistré'
-        // window.location.href="/login"
     }).catch((error) => {
         state.msg.error = error
         console.log(error)
@@ -65,7 +54,6 @@ export const logout = ({ commit, state }) => {
     if (!token) {
         return;
     }
-
     axios.post(
         'https://tondont-list.herokuapp.com/api/auth/logout', {}, {
         headers: {
@@ -90,10 +78,7 @@ export const tasks_user = ({ commit, state }) => {
             'Authorization': `Bearer ${state.user.token}`
         }
     }).then((response) => {
-        // console.log("action tasks")
-        // console.log(response.data['posts']);
         const tasks = response.data['posts']
-
         commit('tasks', tasks)
     }).catch((error) => {
         console.log(error)
@@ -108,13 +93,11 @@ export const task_user = ({ commit, state }, id) => {
             'Authorization': `Bearer ${state.user.token}`
         }
     }).then((response) => {
-        console.log("task_user")
         console.log(response.data)
         const task = {
             id: response.data['id'],
             body: response.data['body']
         }
-
         commit('task', task)
     }).catch((error) => {
         console.log(error)
@@ -135,7 +118,7 @@ export const updateTask = ({ commit, state }, task) => {
         }
     ).then((response) => {
         console.log(response);
-        state.msg.success = 'task updates'
+        state.msg.success = 'Tâche modifié'
         commit('task', task)
     }).catch((error) => {
         console.log(error)
@@ -144,7 +127,7 @@ export const updateTask = ({ commit, state }, task) => {
 }
 
 export const deleteTask = ({ state, commit }, task) => {
-    console.log(state.user.token)
+    // console.log(state.user.token)
     axios.delete(
         `https://tondont-list.herokuapp.com/api/tasks/${task.id}`, {
         headers: {
@@ -152,7 +135,7 @@ export const deleteTask = ({ state, commit }, task) => {
         }
     }).then((response) => {
         console.log(response)
-        state.msg.success = 'task destroyed'
+        state.msg.success = 'Tâche détruite'
         const task = {
             body: ''
         }
@@ -174,7 +157,7 @@ export const createTask = ({ state }, form) => {
         }
     ).then((response) => {
         console.log(response);
-        state.msg.success = 'task created'
+        state.msg.success = 'Tâche créée'
     }).catch((error) => {
         console.log(error)
         state.msg.error = error
